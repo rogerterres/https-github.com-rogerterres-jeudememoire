@@ -188,6 +188,7 @@ class ViewController: UIViewController {
     }
     //---------------
     @IBAction func reset(_ sender: UIButton) {
+        
     for card in cards {
             card.isHidden = false
     }
