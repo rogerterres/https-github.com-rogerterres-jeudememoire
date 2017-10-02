@@ -3,7 +3,7 @@ import UIKit
 //=============
 class ViewController: UIViewController {
     //---------------
-    // LAYERS
+    // LAYERS - la connexion des les "layers" avec le Main.storyboard
     @IBOutlet weak var back1: UIView!
     @IBOutlet weak var front1: UIView!
     @IBOutlet weak var back2: UIView!
@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var front7: UIView!
     @IBOutlet weak var back8: UIView!
     @IBOutlet weak var front8: UIView!
-    // IMAGES
+    // IMAGES DES ANIMAUX - la connexion des les images avec le Main.storyboard
     @IBOutlet weak var animal1: UIImageView!
     @IBOutlet weak var animal2: UIImageView!
     @IBOutlet weak var animal3: UIImageView!
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var animal6: UIImageView!
     @IBOutlet weak var animal7: UIImageView!
     @IBOutlet weak var animal8: UIImageView!
-    // CARDS
+    // CARDS - la connexion des les cartes avec le Main.storyboard
     @IBOutlet weak var card_1: UIView!
     @IBOutlet weak var card_2: UIView!
     @IBOutlet weak var card_3: UIView!
@@ -38,7 +38,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var card_6: UIView!
     @IBOutlet weak var card_7: UIView!
     @IBOutlet weak var card_8: UIView!
-    
+    // BOUTON RESET - la connexion des le bouton "Reset" avec le Main.storyboard
+    @IBOutlet weak var buttonReset: UIButton!
+    // VARIABLES DES TABLEAUX - la creation de les tableaux qui seront utilisé pendant l'utilisation de l'application
     var cards: [UIView]!
     var arrayOfAnimals: [UIImageView]!
     var arrayOfAnimalNames: [String] = ["elephant.png",
@@ -55,7 +57,7 @@ class ViewController: UIViewController {
     
     var arrayOfShowingBacks = [UIView]()
     var arrayOfHidingFronts = [UIView]()
-
+    var countCards = 0
     //---------------
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +66,7 @@ class ViewController: UIViewController {
         randomAnimalNames()
         setImagesToCard()
     }
-    //---------------
+    //--------------- POUR TOURNER LES CARTES D'AVANT EN ARRIERE
     @IBAction func showCard(_ sender: UIButton) {
         
         if arrayOfHidingFronts.count == 2 {
@@ -123,7 +125,7 @@ class ViewController: UIViewController {
         }
         verification()
     }
-    //---------------
+    //--------------- POUR FAIRE LE "FLIP" DANS EN 1 SECONDE
     func flipCard(from: UIView, to: UIView) {
             let transitionOptions: UIViewAnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
         
@@ -135,8 +137,7 @@ class ViewController: UIViewController {
                                 to.isHidden = false
             })
     }
-    //---------------
-    
+    //--------------- POUR METTRE LES ANIMAUX DANS LES CARTES
     func setImagesToCard() {
         var number = 0
         for animal in arrayOfAnimals {
@@ -154,11 +155,15 @@ class ViewController: UIViewController {
             arrayOfAnimalNames.remove(at: randomNumber)
         }
     }
-    //---------------
+    //--------------- POUR FAIRE LA VERIFICATION DE LA QUANTITE DE CARTES TAPEZ
     func verification() {
         if arrayChosenCards.count == 2 {
             if arrayChosenCards[0] == arrayChosenCards[1] {
                 Timer.scheduledTimer(timeInterval: 2, target: self, selector: (#selector(hideCards)), userInfo: nil, repeats: false)
+                        countCards += 1
+                if countCards == 4 {
+                    buttonReset.isHidden = false
+                }
             } else {
                 arrayChosenViews = []
             }
@@ -166,13 +171,13 @@ class ViewController: UIViewController {
         }
         resetCards()
     }
-    //---------------
+    //--------------- POUR RECOMENCER LE JEU
     func resetCards() {
         if arrayOfShowingBacks.count == 2 {
             Timer.scheduledTimer(timeInterval: 2, target: self, selector: (#selector(reflip)), userInfo: nil, repeats: false)
         }
     }
-    //---------------
+    //--------------- Pour faire le "reflip"
     @objc func reflip() {
         for index in 0..<arrayOfShowingBacks.count {
             flipCard(from: arrayOfShowingBacks[index], to: arrayOfHidingFronts[index])
@@ -186,8 +191,16 @@ class ViewController: UIViewController {
         arrayChosenViews[1].isHidden = true
         arrayChosenViews = []
     }
-    //---------------
+    //--------------- La fonction pour le bouton Reset
     @IBAction func reset(_ sender: UIButton) {
+        if arrayOfHidingFronts.count == 1 {
+            flipCard(from: arrayOfShowingBacks[0], to: arrayOfHidingFronts[0])
+            arrayOfShowingBacks = []
+            arrayOfHidingFronts = []
+        }
+        
+        countCards = 0
+        buttonReset.isHidden = true
         
     for card in cards {
             card.isHidden = false
