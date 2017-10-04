@@ -3,7 +3,7 @@ import UIKit
 //=============
 class ViewController: UIViewController {
     //---------------
-    // LAYERS - la connexion des les "layers" avec le Main.storyboard
+    // Caches - la connexion des les "layers" avec le Main.storyboard - Gère le contenu pour une zone sur l'écran.
     @IBOutlet weak var back1: UIView!
     @IBOutlet weak var front1: UIView!
     @IBOutlet weak var back2: UIView!
@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var front7: UIView!
     @IBOutlet weak var back8: UIView!
     @IBOutlet weak var front8: UIView!
-    // IMAGES DES ANIMAUX - la connexion des les images avec le Main.storyboard
+    // Images des animaux - la connexion des les images avec le Main.storyboard - Affiche d'images animées dans l'interface.
     @IBOutlet weak var animal1: UIImageView!
     @IBOutlet weak var animal2: UIImageView!
     @IBOutlet weak var animal3: UIImageView!
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var animal6: UIImageView!
     @IBOutlet weak var animal7: UIImageView!
     @IBOutlet weak var animal8: UIImageView!
-    // CARDS - la connexion des les cartes avec le Main.storyboard
+    // Cartes - la connexion des les cartes avec le Main.storyboard.
     @IBOutlet weak var card_1: UIView!
     @IBOutlet weak var card_2: UIView!
     @IBOutlet weak var card_3: UIView!
@@ -38,12 +38,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var card_6: UIView!
     @IBOutlet weak var card_7: UIView!
     @IBOutlet weak var card_8: UIView!
-    // BOUTON RESET - la connexion des le bouton "Reset" avec le Main.storyboard
+    // Bouton pour recommencer - la connexion des le bouton "Reset" avec le Main.storyboard - Exécute le code en réponse aux interactions de l'utilisateur.
     @IBOutlet weak var buttonReset: UIButton!
-    // VARIABLES DES TABLEAUX - la creation de les tableaux qui seront utilisé pendant l'utilisation de l'application
+    // Variables des tableaux - la creation de les tableaux qui seront utilisé pendant l'utilisation de l'application
     var cards: [UIView]!
     var arrayOfAnimals: [UIImageView]!
-    var arrayOfAnimalNames: [String] = ["elephant.png",
+    var arrayOfAnimalNames: [String] = ["elephant.png", // le tableau d'animaux
                                         "lion.png",
                                         "monkey.png",
                                         "tiger.png",
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
     var arrayOfShowingBacks = [UIView]()
     var arrayOfHidingFronts = [UIView]()
     var countCards = 0
-    //---------------
+    //--------------- Appelé après que la vue du contrôleur de vue a été chargée dans la mémoire.
     override func viewDidLoad() {
         super.viewDidLoad()
         cards = [card_1, card_2, card_3, card_4, card_5, card_6, card_7, card_8]
@@ -66,7 +66,7 @@ class ViewController: UIViewController {
         randomAnimalNames()
         setImagesToCard()
     }
-    //--------------- POUR TOURNER LES CARTES D'AVANT EN ARRIERE
+    //--------------- Pour tourner les cartes d'avant en arriere - Expose le méthode comme un point de connexion entre les éléments de l'interface utilisateur et le code de l'application.
     @IBAction func showCard(_ sender: UIButton) {
         
         if arrayOfHidingFronts.count == 2 {
@@ -123,9 +123,9 @@ class ViewController: UIViewController {
             arrayOfShowingBacks.append(back8)
         default: break
         }
-        verification()
+        verification() // appelle la fonction verification
     }
-    //--------------- POUR FAIRE LE "FLIP" DANS EN 1 SECONDE
+    //--------------- Pour faire le flip de la carte dans 1 seconde
     func flipCard(from: UIView, to: UIView) {
             let transitionOptions: UIViewAnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
         
@@ -137,7 +137,7 @@ class ViewController: UIViewController {
                                 to.isHidden = false
             })
     }
-    //--------------- POUR METTRE LES ANIMAUX DANS LES CARTES
+    //--------------- Pour mettre les animaux dans les cartes
     func setImagesToCard() {
         var number = 0
         for animal in arrayOfAnimals {
@@ -155,23 +155,23 @@ class ViewController: UIViewController {
             arrayOfAnimalNames.remove(at: randomNumber)
         }
     }
-    //--------------- POUR FAIRE LA VERIFICATION DE LA QUANTITE DE CARTES TAPEZ
+    //--------------- Pour faire la verification de la quantite des cartes tapez - Crée une minuterie et l'organise sur la boucle d'exécution en mode par défaut.
     func verification() {
         if arrayChosenCards.count == 2 {
             if arrayChosenCards[0] == arrayChosenCards[1] {
                 Timer.scheduledTimer(timeInterval: 2, target: self, selector: (#selector(hideCards)), userInfo: nil, repeats: false)
                         countCards += 1
                 if countCards == 4 {
-                    buttonReset.isHidden = false
+                    buttonReset.isHidden = false // Détermine la visibilité du le bouton Reset.
                 }
             } else {
                 arrayChosenViews = []
             }
             arrayChosenCards = []
         }
-        resetCards()
+        resetCards() // appelle le fonction de resetCards
     }
-    //--------------- POUR RECOMENCER LE JEU
+    //--------------- Pour recommencer le jeu
     func resetCards() {
         if arrayOfShowingBacks.count == 2 {
             Timer.scheduledTimer(timeInterval: 2, target: self, selector: (#selector(reflip)), userInfo: nil, repeats: false)

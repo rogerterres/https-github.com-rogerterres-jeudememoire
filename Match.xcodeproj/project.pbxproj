@@ -19,6 +19,7 @@
 		AD4869521F729E1500580143 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD4869501F729E1500580143 /* Main.storyboard */; };
 		AD4869541F729E1500580143 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD4869531F729E1500580143 /* Assets.xcassets */; };
 		AD4869571F729E1500580143 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD4869551F729E1500580143 /* LaunchScreen.storyboard */; };
+		ADAD3AF11F85302700EC6D80 /* garderie.png in Resources */ = {isa = PBXBuildFile; fileRef = ADAD3AF01F85302700EC6D80 /* garderie.png */; };
 		ADCDF4581F82709A006C6A6A /* Icon-167.png in Resources */ = {isa = PBXBuildFile; fileRef = ADCDF43A1F82707E006C6A6A /* Icon-167.png */; };
 		ADCDF4591F82709A006C6A6A /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = ADCDF43B1F82707F006C6A6A /* Icon-120.png */; };
 		ADCDF45A1F82709A006C6A6A /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = ADCDF43C1F827080006C6A6A /* Icon-76.png */; };
@@ -66,6 +67,7 @@
 		AD4869531F729E1500580143 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD4869561F729E1500580143 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD4869581F729E1500580143 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADAD3AF01F85302700EC6D80 /* garderie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = garderie.png; path = ../../../../../../../../../../Downloads/garderie.png; sourceTree = "<group>"; };
 		ADCDF43A1F82707E006C6A6A /* Icon-167.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-167.png"; path = "../../../../../../../../../../Downloads/appiconmaker/Icon-167.png"; sourceTree = "<group>"; };
 		ADCDF43B1F82707F006C6A6A /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-120.png"; path = "../../../../../../../../../../Downloads/appiconmaker/Icon-120.png"; sourceTree = "<group>"; };
 		ADCDF43C1F827080006C6A6A /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76.png"; path = "../../../../../../../../../../Downloads/appiconmaker/Icon-76.png"; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		AD48695E1F729EA500580143 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				ADAD3AF01F85302700EC6D80 /* garderie.png */,
 				AD0C15711F799D3100105BAB /* elephant.png */,
 				AD0C15721F799D3100105BAB /* lion.png */,
 				AD0C15731F799D3100105BAB /* monkey.png */,
@@ -254,6 +257,7 @@
 				ADCDF4601F82709A006C6A6A /* Icon-60.png in Resources */,
 				ADCDF4661F82709A006C6A6A /* Icon-72.png in Resources */,
 				AD4869571F729E1500580143 /* LaunchScreen.storyboard in Resources */,
+				ADAD3AF11F85302700EC6D80 /* garderie.png in Resources */,
 				ADCDF4701F82709A006C6A6A /* Icon-16.png in Resources */,
 				ADCDF45A1F82709A006C6A6A /* Icon-76.png in Resources */,
 				AD0C15781F799D3100105BAB /* tiger.png in Resources */,
